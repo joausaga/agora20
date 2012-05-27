@@ -1,0 +1,30 @@
+@(ideaTitle: String, ideaText: String, ideaCreator: String, ideaVotes: String)
+
+@main(title = "Agora 2.0") {
+	<div class="container-fluid">
+		<div class="row-fluid">
+  			<div class="span8">
+  				<div class="hero-unit">
+  					<div class="row-fluid">
+  						<div class="span2"><div class="label label-info"><h4 align="center">Score </h4><h3 align="center">@ideaVotes</h3></div></div>
+  						<div class="span10"><p align="right"><span class="label label-inverse">Proposed by @ideaCreator</span></p></div>
+					</div>
+					<br>	
+					<h1>@ideaTitle</h1>
+					<p>@ideaText</p>
+					<p align="center">
+							<button id="buttonVoteUp" class="btn btn-success btn-large"><i class="icon-white icon-thumbs-up"></i> Agree</button>
+							<button id="buttonVoteDown" class="btn btn-danger btn-large"><i class="icon-white icon-thumbs-down"></i> Disagree</button>
+							<button id="buttonChange" class="btn btn-warning btn-large"><i class="icon-white icon-refresh"></i> Change</button>
+					</p>
+  				</div>
+  			</div>
+  			<div class="span4">
+    			<div class="hero-unit">
+					<h2>Extra Info</h2>
+					<p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+    			</div>
+  			</div>
+  		</div>
+	</div>
+}
