@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeoutException;
 
 import models.Idea;
 import play.Play;
@@ -79,7 +80,7 @@ public class Ideas extends Controller {
 		return response;
 	}
 
-	public static Response getIdea(String ideaId) {
+	public static Response getIdea(String ideaId) throws TimeoutException {
 		WSRequestHolder request = WS.url("http://fiveheads.ideascale.com/a/rest/v1/ideas/" + ideaId)
 				.setHeader("api_token", API_TOKEN);
 		Response response = request.get().get();
@@ -130,13 +131,19 @@ public class Ideas extends Controller {
     }
     
     public static Result updateIdeaInfo() {
-    	Response response = getIdea(idea.get("id"));
-    	if (response.getStatus() == 200) {
-    		return ok(views.html.idea.render(idea.get("title"),idea.get("text"),idea.get("creator"),idea.get("score")));
-    	}
-    	else {
-    		return badRequest("Problem when try to upload the idea");
-    	}
+    	Response response;
+		try {
+			response = getIdea(idea.get("id"));
+			if (response.getStatus() == 200) {
+	    		return ok(views.html.idea.render(idea.get("title"),idea.get("text"),idea.get("creator"),idea.get("score")));
+	    	}
+	    	else {
+	    		return badRequest("Problem when try to upload the idea");
+	    	}
+		} catch (TimeoutException e) {
+			e.printStackTrace();
+			return badRequest("Promise timed out after 5000 : MILLISECONDS");
+		}
     }
     
     public static Result create() {
