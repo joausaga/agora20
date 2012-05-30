@@ -43,7 +43,7 @@ $(document).ready(function() {
 	$('#buttonChange').click(function() {
 		staticAlert('info', 'Retriving an idea, please wait');
 		$('#ideaContainer').load(
-				'/ideas/update', 
+				'/ideas/change', 
 				function(response, status, xhr) {
 					if (status == "success") {
 						newAlert('success', "New Idea retrieved");
