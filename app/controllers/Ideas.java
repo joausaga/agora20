@@ -97,7 +97,7 @@ public class Ideas extends Controller {
     }
     
     public static Result voteUp() {
-    	WSRequestHolder request = WS.url("http://ideas.ideascale.com/a/rest/v1/ideas/"+ idea.get("id") +"/vote/up")
+    	WSRequestHolder request = WS.url("http://fiveheads.ideascale.com/a/rest/v1/ideas/"+ idea.get("id") +"/vote/up")
 				.setHeader("api_token", API_TOKEN);
     	Response response = request.post("{ \"myVote\":1 }").get();
     	if (response.getStatus() == 200) {
@@ -109,7 +109,7 @@ public class Ideas extends Controller {
     }
     
     public static Result voteDown() {
-    	WSRequestHolder request = WS.url("http://ideas.ideascale.com/a/rest/v1/ideas/"+ idea.get("id") +"/vote/down")
+    	WSRequestHolder request = WS.url("http://fiveheads.ideascale.com/a/rest/v1/ideas/"+ idea.get("id") +"/vote/down")
 				.setHeader("api_token", API_TOKEN);
     	Response response = request.post("{ \"myVote\":-1 }").get();
     	if (response.getStatus() == 200) {
