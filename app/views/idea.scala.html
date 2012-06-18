@@ -5,26 +5,48 @@
 		<div class="row-fluid">
   			<div class="span8">
   				<div class="hero-unit">
-  					<div class="row-fluid">
-  						<div class="span2"><div class="label label-info"><h4 align="center">Score </h4><h3 align="center">@ideaVotes</h3></div></div>
-  						<div class="span10"><p align="right"><span class="label label-inverse">Proposed by @ideaCreator</span></p></div>
-					</div>
 					<br>	
-					<h2>@ideaTitle</h2>
-					<p>@ideaText</p>
+					 <h2 align="center"> <i>	La domanda di questo momento: </i></h2>
+					<h1 align="center">@ideaTitle</h1> 
+                    <br />
+					<h2 align="center">@ideaText</h2>
+					<!--<div class="span10"><p align="right"><span class="label label-inverse">Proposed by @ideaCreator</span></p></div>-->
+					<br /> <br />
+                    <h3 align="center"> Contribuisci anche tu alla discussione di oggi!</h3>
+                    <p align="center"><b> E' facile e semplice <br /> Basta schiacciare il pulsante qui lato</b></p>
+                    <br /> <br />
 					<p align="center">
-							<button id="buttonVoteUp" class="btn btn-success btn-large"><i class="icon-white icon-thumbs-up"></i> Agree</button>
-							<button id="buttonVoteDown" class="btn btn-danger btn-large"><i class="icon-white icon-thumbs-down"></i> Disagree</button>
+							<button id="buttonVoteUp" class="btn btn-success btn-large"><i class="icon-white icon-thumbs-up"></i> Tasto Verde Si</button>
+							<button id="buttonVoteDown" class="btn btn-danger btn-large"><i class="icon-white icon-thumbs-down"></i> Tasto Rosso No</button>
 							<button id="buttonChange" class="btn btn-warning btn-large"><i class="icon-white icon-refresh"></i> Change</button>
 					</p>
+  				</div>
+				<div class="hero-unit">
+					  					<div class="row-fluid">
+  						<div class="span9"><h4 align="left"> @ideaVotes persone hanno votato, vota anche tu e scopri i risultati in temo reale! </h4></div>
+  						
+					</div>
+  				</div>
+                
+                				<div class="hero-unit">
+					  					<div class="row-fluid">
+  						<div class="span9"><h4 align="left"> Disclaimer: </h4></div>
+  						
+					</div>
   				</div>
   			</div>
   			<div class="span4">
     			<div class="hero-unit">
-					<h3 align="center">Extra Information</h3>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+					<h2 align="center">Extra Information</h2>
+					<p> <b> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </b></p>
     			</div>
   			</div>
+            
+              	<div class="span4">
+    			
+					<img src="@routes.Assets.at("images/festival-economia.jpg")" width="340" height="346" class="floatLeft" />
+    			</div>
+  			
   		</div>
 	</div>
 }

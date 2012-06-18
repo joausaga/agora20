@@ -1,0 +1,124 @@
+
+
+img.floatLeft { 
+    float: left; 
+	margin: 30px 0px 10px 100px; 
+}
+
+img.floatRight { 
+    float: right; 
+	margin: 0px 100px 10px 0px;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: #ffffff;
+}
+
+.container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+
+p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h3 {
+  text-align: center;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+
+.dropup .caret,
+.navbar-fixed-bottom .dropdown .caret {
+
+	border-bottom: 4px solid #ffffff;
+
+}
+
+
+.navbar {
+  margin-bottom: 18px;
+}
+
+
+.navbar-inner {
+	min-height: 40px;
+	padding-right: 20px;
+	padding-left: 20px;
+	background-color: #FFFFFF;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);         
+}
+
+.navbar .container {
+  width: auto;
+}
+
+.nav-collapse.collapse {
+  height: auto;
+}
+
+.navbar {
+  color: #000000;
+}
+
+
+.headerSection{
+width: 100%;
+margin: 0 auto;	
+}
+
+.headerdivider{
+clear:both;	
+padding:5px 0;	
+margin: 0 30px;
+border-bottom: solid 1px black;
+margin: 20px 40px 40px 20px;
+}
+
+.brand {
+
+margin: 0 auto;
+
+}
+
+.brandTitle  {
+	font-size: 100px;
+	font-weight: 100;
+	line-height: 1;
+	color: #000000;
+	text-align: center;
+	
+}
+
+.navbar .navbar-text {
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+
+.navbar-fixed-top {
+ 
+}
+
+.hero-unit {
+  padding: 10px;
+  margin-bottom: 10px;
+}
