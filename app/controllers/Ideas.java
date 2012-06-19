@@ -233,7 +233,7 @@ public class Ideas extends Controller {
     	return TODO;
     }
     
-    public static void feedIdeas() {
+    public static Result feedIdeas() {
     	Response response;
 		try {
 			response = getRecentIdeas();
@@ -267,12 +267,15 @@ public class Ideas extends Controller {
 	    		if (newIdeasCreated) {
 	    			Logger.info("New ideas retrieved from IdeaScale");
 	    		}
+	    		return redirect("/ideas");
 	    	}
 	    	else {
 	    		Logger.error("Something wrong with the request to obtain new ideas from IdeaScale");
+	    		return ok("Problems when feeting new ideas from IdeaScale.com");
 	    	}
 		} catch (TimeoutException e1) {
 			Logger.error("Something wrong with the request to obtain new ideas from IdeaScale");
+			return ok("Problems when feeting new ideas from IdeaScale.com");
 		}
     }
     

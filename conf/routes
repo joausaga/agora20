@@ -11,6 +11,7 @@ POST    /ideas/voteUp                	controllers.Ideas.voteUp()
 POST    /ideas/voteDown                	controllers.Ideas.voteDown()
 GET     /ideas/change                	controllers.Ideas.change()
 GET     /ideas/show              		controllers.Ideas.show()
+GET    /ideas/feedideas              	controllers.Ideas.feedIdeas()
 
 # Extra Information
 
