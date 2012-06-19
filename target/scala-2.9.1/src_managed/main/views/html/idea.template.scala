@@ -43,32 +43,37 @@ Seq(format.raw/*1.116*/("""
 					<br /> <br />
                     <h3 align="center"> Contribuisci anche tu alla discussione di oggi!</h3>
                     <p align="center"><b> E' facile e semplice <br /> Basta schiacciare il pulsante qui lato</b></p>
-                    <br /> <br />
-					<p align="center">
-							<button id="buttonVoteUp" class="btn btn-success btn-large"><i class="icon-white icon-thumbs-up"></i> Tasto Verde Si</button>
-							<button id="buttonVoteDown" class="btn btn-danger btn-large"><i class="icon-white icon-thumbs-down"></i> Tasto Rosso No</button>
-							<button id="buttonChange" class="btn btn-warning btn-large"><i class="icon-white icon-refresh"></i> Change</button>
-					</p>
-  				</div>
-				<div class="hero-unit">
+                    <br />
+					<!-- <p align="center">
+							<button class="btn btn-success btn-large disabled" id="buttonVoteUp"><i class="icon-white icon-thumbs-up"></i>Tasto Verde Si</button>
+							<button id="buttonVoteDown" class="btn btn-danger btn-large disabled"><i class="icon-white icon-thumbs-down"></i> Tasto Rosso No</button>
+							<button id="buttonChange" class="btn btn-warning btn-large disabled"><i class="icon-white icon-refresh"></i> Change</button>
+					</p>-->
 					<div class="row-fluid">
-  						<div class="span9"><h4 align="left"> """),_display_(Seq(/*26.47*/ideaVotes)),format.raw/*26.56*/(""" persone hanno votato, vota anche tu e scopri i risultati in temo reale! </h4></div>	
+						<div class="span4 label label-success"><h2 align="center"> Votare Si</h2></div>
+						<div class="span4 label label-important"><h2 align="center">Votare No</h2></div>
+						<div class="span4 label label-warning"><h2 align="center">Cambiare Idea</h2></div>
 					</div>
   				</div>
+				<!-- <div class="hero-unit">
+					 <div class="row-fluid">
+  						<div class="span9"><h4 align="left"> """),_display_(Seq(/*31.47*/ideaVotes)),format.raw/*31.56*/(""" persone hanno votato, vota anche tu e scopri i risultati in temo reale! </h4></div>	
+					</div>
+  				</div> -->
                 <div class="hero-unit">
 					<div class="row-fluid">
-  						<div class="span9"><h4 align="left"> Disclaimer: </h4></div>  						
+  						<div class="span9"><h4 align="left"> Disclaimer: """),_display_(Seq(/*36.59*/ideaCreator)),format.raw/*36.70*/("""</h4></div>  						
 					</div>
   				</div>
   			</div>
   			<div class="span4">
     			<div class="hero-unit">
-					<div id = "extraInfoTitle"><h3 align="center">"""),_display_(Seq(/*37.53*/eiTitle)),format.raw/*37.60*/("""</h3></div>
-					<div id = "extraInfoContent"><p>"""),_display_(Seq(/*38.39*/eiContent)),format.raw/*38.48*/("""</p></div>
+					<div id = "extraInfoTitle"><h3 align="center">"""),_display_(Seq(/*42.53*/eiTitle)),format.raw/*42.60*/("""</h3></div>
+					<div id = "extraInfoContent"><p>"""),_display_(Seq(/*43.39*/eiContent)),format.raw/*43.48*/("""</p></div>
     			</div>
   			</div>
             <div class="span4">	
-				<img src=""""),_display_(Seq(/*42.16*/routes/*42.22*/.Assets.at("images/festival-economia.jpg"))),format.raw/*42.64*/("""" width="340" height="346" class="floatLeft" />
+				<!--  <img src=""""),_display_(Seq(/*47.22*/routes/*47.28*/.Assets.at("images/festival-economia.jpg"))),format.raw/*47.70*/("""" width="340" height="346" class="floatLeft" /> -->
     		</div>
   		</div>
 	</div>
@@ -84,11 +89,11 @@ Seq(format.raw/*1.116*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Tue Jun 19 17:31:27 CEST 2012
+                    DATE: Tue Jun 19 19:26:37 CEST 2012
                     SOURCE: /Users/jorgesaldivar/workspace/Agora 2.0/app/views/idea.scala.html
-                    HASH: 3a2f9cc09e81082fbafd7bac8178e9d0b7f2ee39
-                    MATRIX: 790->1|977->115|1009->118|1042->143|1076->145|1373->411|1404->420|1521->506|1551->514|1688->620|1722->631|2592->1470|2623->1479|3065->1890|3094->1897|3175->1947|3206->1956|3324->2043|3339->2049|3403->2091
-                    LINES: 27->1|30->1|32->3|32->3|32->3|39->10|39->10|41->12|41->12|42->13|42->13|55->26|55->26|66->37|66->37|67->38|67->38|71->42|71->42|71->42
+                    HASH: 1da17b7ebdf9bd70dd3af381614158d57386dd0d
+                    MATRIX: 790->1|977->115|1009->118|1042->143|1076->145|1373->411|1404->420|1521->506|1551->514|1688->620|1722->631|2928->1806|2959->1815|3237->2062|3270->2073|3470->2242|3499->2249|3580->2299|3611->2308|3735->2401|3750->2407|3814->2449
+                    LINES: 27->1|30->1|32->3|32->3|32->3|39->10|39->10|41->12|41->12|42->13|42->13|60->31|60->31|65->36|65->36|71->42|71->42|72->43|72->43|76->47|76->47|76->47
                     -- GENERATED --
                 */
             

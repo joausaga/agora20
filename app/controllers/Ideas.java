@@ -186,7 +186,7 @@ public class Ideas extends Controller {
     		sendVote("{ \"myVote\":1 }","up");
     	}
     	currentIdea.updateScore(1);
-    	return ok("Thanks!, your vote has been registered");
+    	return ok("Grazie!, Il tuo voto e stato registrato");
     }
     
     /**
@@ -202,7 +202,7 @@ public class Ideas extends Controller {
     		sendVote("{ \"myVote\":-1 }","down");
     	}
     	currentIdea.updateScore(-1);
-    	return ok("Thanks!, your vote has been registered");
+    	return ok("Grazie!, Il tuo voto e stato registrato");
     }
 
     /**

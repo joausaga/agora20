@@ -14,21 +14,26 @@
 					<br /> <br />
                     <h3 align="center"> Contribuisci anche tu alla discussione di oggi!</h3>
                     <p align="center"><b> E' facile e semplice <br /> Basta schiacciare il pulsante qui lato</b></p>
-                    <br /> <br />
-					<p align="center">
-							<button id="buttonVoteUp" class="btn btn-success btn-large"><i class="icon-white icon-thumbs-up"></i> Tasto Verde Si</button>
-							<button id="buttonVoteDown" class="btn btn-danger btn-large"><i class="icon-white icon-thumbs-down"></i> Tasto Rosso No</button>
-							<button id="buttonChange" class="btn btn-warning btn-large"><i class="icon-white icon-refresh"></i> Change</button>
-					</p>
-  				</div>
-				<div class="hero-unit">
+                    <br />
+					<!-- <p align="center">
+							<button class="btn btn-success btn-large disabled" id="buttonVoteUp"><i class="icon-white icon-thumbs-up"></i>Tasto Verde Si</button>
+							<button id="buttonVoteDown" class="btn btn-danger btn-large disabled"><i class="icon-white icon-thumbs-down"></i> Tasto Rosso No</button>
+							<button id="buttonChange" class="btn btn-warning btn-large disabled"><i class="icon-white icon-refresh"></i> Change</button>
+					</p>-->
 					<div class="row-fluid">
-  						<div class="span9"><h4 align="left"> @ideaVotes persone hanno votato, vota anche tu e scopri i risultati in temo reale! </h4></div>	
+						<div class="span4 label label-success"><h2 align="center"> Votare Si</h2></div>
+						<div class="span4 label label-important"><h2 align="center">Votare No</h2></div>
+						<div class="span4 label label-warning"><h2 align="center">Cambiare Idea</h2></div>
 					</div>
   				</div>
+				<!-- <div class="hero-unit">
+					 <div class="row-fluid">
+  						<div class="span9"><h4 align="left"> @ideaVotes persone hanno votato, vota anche tu e scopri i risultati in temo reale! </h4></div>	
+					</div>
+  				</div> -->
                 <div class="hero-unit">
 					<div class="row-fluid">
-  						<div class="span9"><h4 align="left"> Disclaimer: @ideaCreator</h4></div>  						
+  						<div id="ideaAuthor" class="span9"><h4 align="left"> Disclaimer: @ideaCreator</h4></div>  						
 					</div>
   				</div>
   			</div>
@@ -39,7 +44,7 @@
     			</div>
   			</div>
             <div class="span4">	
-				<img src="@routes.Assets.at("images/festival-economia.jpg")" width="340" height="346" class="floatLeft" />
+				<!--  <img src="@routes.Assets.at("images/festival-economia.jpg")" width="340" height="346" class="floatLeft" /> -->
     		</div>
   		</div>
 	</div>
