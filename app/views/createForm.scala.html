@@ -1,0 +1,52 @@
+@(extraInfoForm: Form[ExtraInfo])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main(title = "Agora 2.0 - Create Extra Information") {
+    
+    @form(routes.ExtraInfos.save()) {
+    <div class="container">
+        <div class="hero-unit">
+        
+        <fieldset>
+            <h2>Create Extra Information</h2>
+        
+            @inputText(
+                extraInfoForm("title"), 
+                '_label -> "Title", 
+                '_help -> "Insert the title for the extra information.",
+                '_error -> extraInfoForm.globalError
+            )
+            
+            @textarea(
+                extraInfoForm("content"), 
+                '_label -> "Text", 
+                '_help -> "Insert the text for the extra information.",
+                '_error -> extraInfoForm.globalError
+            )
+            
+            @select(
+                extraInfoForm("idea.id"), 
+                options = options(Idea.options),
+                '_default -> "--- Choose an Idea ---",
+                '_label -> "Idea",
+                '_error -> extraInfoForm("idea.id").error.map(_.withMessage("Please select an idea"))
+            )
+            
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create" class="btn btn-primary"> 
+            <a href="@routes.ExtraInfos.list()" class="btn">Cancel</a> 
+        </div>
+        
+        </div>
+        
+        </div>
+        
+    }
+    
+}

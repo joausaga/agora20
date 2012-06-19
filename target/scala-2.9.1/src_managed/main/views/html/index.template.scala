@@ -47,8 +47,8 @@ Seq(format.raw/*1.19*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Sun May 27 11:18:53 CEST 2012
-                    SOURCE: /Users/jorgesaldivar/agora2.0/app/views/index.scala.html
+                    DATE: Wed May 30 10:52:09 CEST 2012
+                    SOURCE: /Users/jorgesaldivar/workspace/Agora 2.0/app/views/index.scala.html
                     HASH: e718e8685d7e214d4867b31845fbe583f1af64ff
                     MATRIX: 755->1|844->18|876->21|911->48|945->50|985->61|999->67|1037->84|1074->91
                     LINES: 27->1|30->1|32->3|32->3|32->3|34->5|34->5|34->5|36->7

@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                           	controllers.Ideas.index()
+GET     /                           	controllers.Application.index()
 
 # Ideas         
 GET     /ideas                  		controllers.Ideas.index() 
@@ -11,8 +11,22 @@ POST    /ideas/voteUp                	controllers.Ideas.voteUp()
 POST    /ideas/voteDown                	controllers.Ideas.voteDown()
 GET     /ideas/change                	controllers.Ideas.change()
 GET     /ideas/show              		controllers.Ideas.show()
-GET     /ideas/feedIdeas              	controllers.Ideas.feedIdeas()
-GET     /ideas/feedVotes              	controllers.Ideas.feedVotes()
+
+# Extra Information
+
+# ExtraInfo list (look at the default values for pagination parameters)
+GET     /extrainfo                  controllers.ExtraInfos.list(p:Int ?= 0, s ?= "title", o ?= "asc", f ?= "")
+
+# Add extra information
+GET     /extrainfo/new              controllers.ExtraInfos.create()
+POST    /extrainfo/save             controllers.ExtraInfos.save()
+
+# Edit existing extra information
+GET     /extrainfo/:id              controllers.ExtraInfos.edit(id:Integer)
+POST    /extrainfo/:id              controllers.ExtraInfos.update(id:Integer)
+
+# Delete an extra information
+POST    /extrainfo/:id/delete       controllers.ExtraInfos.delete(id:Integer)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file               	controllers.Assets.at(path="/public", file)

@@ -5,8 +5,7 @@ function newAlert (type, message) {
     	      "<button class=\"close\" data-dismiss=\"alert\" href=\"#\">x</button>" + 
     	      "<p align=\"center\">" + message + "</p></div>")
     );
-    //$(".alert").alert();
-    $(".alert").delay(500).fadeOut("slow", function () { $(this).remove(); });
+    $(".alert").delay(1500).fadeOut("slow", function () { $(this).remove(); });
 }
 
 function staticAlert (type, message) {
@@ -19,12 +18,43 @@ function staticAlert (type, message) {
     $(".alert").alert();
 }
 
+function modalWindow(message) {
+	$("#modalMessage").html("<h3 align=\"center\">"+ message +"</h3>");
+	$('#modalWindow').modal('show');
+	$('#modalWindow').delay(1500).fadeOut("slow", function () { $(this).modal('hide'); changeIdea(); });
+}
+
+function updateIdeaContent(data) {
+	if (data["score"] == 0) {
+		$("#ideaScore").attr("class", "label label-info");
+	}
+	else {
+		if (data["score"] > 0) {
+			$("#ideaScore").attr("class", "label label-success");
+		}
+		else {
+			$("#ideaScore").attr("class", "label label-important");
+		}
+	}
+	$("#ideaScore").html("<h4 align=\"center\">Score </h4><h3 align=\"center\">" +  data["score"] + "</h3>");
+	$("#ideaTitle").html("<h2>"+data["title"]+"</h2>");
+	$("#ideaText").html("<p>"+data["content"]+"</p>");
+	$("#ideaAuthor").html("<p align=\"right\"><span class=\"label label-inverse\">Proposed by " + data["author"] + "</span></p>");
+	$("#extraInfoTitle").html("<h3 align=\"center\">"+ data["eiTitle"] +"</h3>");
+	$("#extraInfoContent").html("<p>"+ data["eiContent"] +"</p>");
+}
+
 function voteUp() {
 	var  jqxhr = $.post(
 			"/ideas/voteUp", 
 			function(data, textStatus, jqXHR) {
-				newAlert('success', data);
-				$('#ideaContainer').load('/ideas/show');
+				modalWindow(data);
+				var  jqxhr = $.get(
+						"/ideas/show", 
+						function(data, textStatus, jqXHR) {
+							updateIdeaContent(data);
+						});
+				jqxhr.error(function(){ newAlert('error', data.responseText); });
 			});
 	jqxhr.error(function(){ newAlert('error', data.responseText); });
 }
@@ -33,42 +63,24 @@ function voteDown() {
 	var  jqxhr = $.post(
 			"/ideas/voteDown", 
 			function(data, textStatus, jqXHR) {
-				newAlert('success', data);
-				$('#ideaContainer').load('/ideas/show');
+				modalWindow(data);
+				var  jqxhr = $.get(
+						"/ideas/show", 
+						function(data, textStatus, jqXHR) {
+							updateIdeaContent(data);
+						});
+				jqxhr.error(function(){ newAlert('error', data.responseText); });
 			});
 	jqxhr.error(function(){ newAlert('error', data.responseText); });
 }
 
 function changeIdea() {
-	$('#ideaContainer').load(
-			'/ideas/change', 
-			function(response, status, xhr) {
-				if (status == "success") {
-					newAlert('success', "New Idea retrieved");
-				}
-			}
-	);
-}
-
-function feedIdeas() {
-	staticAlert('info', 'Retriving new ideas from IdeaScale.com');
-	 var  jqxhr = $.get(
-				"/ideas/feedIdeas", 
-				function(data, textStatus, jqXHR) {
-					newAlert('success', data);
-				});
+	var  jqxhr = $.get(
+			"/ideas/change", 
+			function(data, textStatus, jqXHR) {
+				updateIdeaContent(data);
+			});
 	jqxhr.error(function(){ newAlert('error', data.responseText); });
-}
-
-function feedVotes() {
-	staticAlert('info', 'Retriving votes from IdeaScale.com');
-	 var  jqxhr = $.get(
-				"/ideas/feedVotes", 
-				function(data, textStatus, jqXHR) {
-					newAlert('success', data);
-					$('#ideaContainer').load('/ideas/show');
-				});
-	jqxhr.error(function(){ newAlert('error', data.responseText); });;
 }
 
 $(document).ready(function() {
@@ -77,43 +89,21 @@ $(document).ready(function() {
 	    e.preventDefault();
 	    return false;
 	});
-	$('#interactionZone').mousedown(function(e) {
+	// Disable the mouse cursor //
+	$('#ideaContainer').css({cursor:'none'});
+	$('#ideaContainer').mousedown(function(e) {
 		if (e.which == 3) {
-			staticAlert('info', 'Registering your vote, please wait');
 			voteDown();
 		}
 		else if(e.which == 1) {
-			staticAlert('info', 'Registering your vote, please wait');
 			voteUp();
 		}
 		else {
 			staticAlert('info', 'Retriving an idea, please wait');
 			changeIdea();
+			$("#alert-area").empty();
 		}
 	});
-	$('#buttonVoteUp').click(function() {
-		staticAlert('info', 'Registering your vote, please wait');
-		voteUp();
-	 });
-	$('#buttonVoteDown').click(function() {
-		staticAlert('info', 'Registering your vote, please wait');
-		voteDown();
-	 });
-	$('#buttonChange').click(function() {
-		staticAlert('info', 'Retriving an idea, please wait');
-		changeIdea();
-	 });
-	 $('ul.nav li').click(function(e) {
-		 var text = $(this).children('a').html();
-		 if (text == "Feed Ideas") {
-			 feedIdeas();
-		 }
-		 else if (text == "Feed Votes"){
-			 feedVotes();
-		 }
-		 else {
-			 staticAlert('error', 'Do not understand the option selected');
-		 }
-	 });
+	/* Set a timer to change the ideas every 5 minutes */
+	window.setInterval(function() {changeIdea();}, 300000);
 });
-
