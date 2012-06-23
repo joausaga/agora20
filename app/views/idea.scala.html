@@ -4,49 +4,56 @@
 	<div id = "ideaContainer" class="container-fluid">
 		<div class="row-fluid">
   			<div class="span8">
-  				<div class="hero-unit">
+  				<!-- put container here!! -->
 					<br>	
-					<h2 align="center"> <i>	La domanda di questo momento: </i></h2>
-					<div id="ideaTitle"><h1 align="center">@ideaTitle</h1></div> 
+					<div class="h2Static">La domanda di questo momento: </div>
+					<div id="ideaTitle"><h1>@ideaTitle</h1></div> 
                     <br />
-					<div id="ideaText"><h2 align="center">@ideaText</h2></div>
+					<div id="ideaText"><h2>@ideaText</h2></div>
 					<!--<div class="span10"><p align="right"><span class="label label-inverse">Proposed by @ideaCreator</span></p></div>-->
-					<br /> <br />
-                    <h3 align="center"> Contribuisci anche tu alla discussione di oggi!</h3>
-                    <p align="center"><b> E' facile e semplice <br /> Basta schiacciare il pulsante qui lato</b></p>
-                    <br />
+					
+                    <div class="h2Static"> <span style='color:#B84C13;'> Contribuisci</span> anche tu alla discussione di questo argomento!<br />
+						E' facile e semplice: <span style='color:#85B245;'>Basta premere uno dei pulsanti colorati presenti sotto lo schermo</span></div>
+						
 					<!-- <p align="center">
 							<button class="btn btn-success btn-large disabled" id="buttonVoteUp"><i class="icon-white icon-thumbs-up"></i>Tasto Verde Si</button>
 							<button id="buttonVoteDown" class="btn btn-danger btn-large disabled"><i class="icon-white icon-thumbs-down"></i> Tasto Rosso No</button>
 							<button id="buttonChange" class="btn btn-warning btn-large disabled"><i class="icon-white icon-refresh"></i> Change</button>
 					</p>-->
-					<div class="row-fluid">
-						<div class="span4 label label-success"><h2 align="center"> Votare Si</h2></div>
-						<div class="span4 label label-important"><h2 align="center">Votare No</h2></div>
-						<div class="span4 label label-warning"><h2 align="center">Cambiare Idea</h2></div>
+					<!--<div class="row-fluid">
+						<div class="span4 label label-success"><h2 align="center">Premi il pulsante verde per votare SI</h2></div>
+						<div class="span4 label label-important"><h2 align="center">Premi il pulsante rosse per votare NO</h2></div>
+						<div class="span4 label label-warning"><h2 align="center">Premi il pulsante giallo per cambiare la domanda</h2></div>
+					</div>-->
+					<div class="buttonContainer">
+						<a class="button" href="#"><span style='color:#85B245;'>Premi il pulsante verde per votare SI</span></a>
+						<a class="button" href="#"><span style='color:#B94A48;'>Premi il pulsante rosso per votare NO</span></a>
+						<a class="button" href="#"><span style='color:#B84C13;'>Premi il pulsante giallo per cambiare la domanda</span></a>
 					</div>
-  				</div>
-				<!-- <div class="hero-unit">
-					 <div class="row-fluid">
-  						<div class="span9"><h4 align="left"> @ideaVotes persone hanno votato, vota anche tu e scopri i risultati in temo reale! </h4></div>	
-					</div>
-  				</div> -->
-                <div class="hero-unit">
-					<div class="row-fluid">
-  						<div id="ideaAuthor" class="span9"><h4 align="left"> Idea contributed by: @ideaCreator</h4></div>  						
-					</div>
-  				</div>
+					
+				<!-- end container here!! -->
+
+					<!-- put container 2 here!! -->
+						<div class="scoreContainer">
+							@ideaVotes Persone hanno votato, vota anche tu e scopri i risultati in temo reale!
+						</div>
+					<!-- end container 2 here!! -->
 				
-				<div class="hero-unit">
-					<div class="row-fluid">
-  						<div id="ideaAuthor" class="span9"><h4 align="left"> Disclaimer: This application is for research purposes only and does not guarantee any actions will be taken on the votes cast.</h4></div>  						
-					</div>
-  				</div>
+				
   			</div>
   			<div class="span4">
-    			<div class="hero-unit">
-					<div id = "extraInfoTitle"><h3 align="center">@eiTitle</h3></div>
-					<div id = "extraInfoContent"><p>@eiContent</p></div>
+    			<div class="indexContainer">
+					<div class="h3Static">Other questions available for voting</div>
+					<div id="index"> <span style='color:#656561;'> 
+						<ul>
+							<li> ... concerned about possible increase in the number of students in Povo?</li>
+							<li> ... more communal spaces for students on campus?</li>
+							<li> ... concerned about summer timetable for buses to Povo, especially bus number 5?</li>
+							<li> ... satisfied with the student cafeteria at Povo 1?</li>
+							<li> ... Phd students... concerned about the Student's Career session in the ICT website gone missing? </li>						
+						</ul>
+						</span>
+					</div>
     			</div>
   			</div>
             <div class="span4">	

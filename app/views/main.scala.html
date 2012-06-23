@@ -12,6 +12,7 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap.min.css")">
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/interface.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/interface-2.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <style type="text/css">
       		body {
@@ -27,7 +28,8 @@
         <script src="@routes.Assets.at("javascripts/agora20.js")" type="text/javascript"></script>
     </head>
     <body>
-    	<div class="modal hide" id="modalWindow">
+    	<div id="outerContainer">
+		<div class="modal hide" id="modalWindow">
   			<div class="modal-header label label-success">
     			<button type="button" class="close" data-dismiss="modal">×</button>
     			<h2>Agora 2.0</h2>
@@ -35,24 +37,48 @@
   			<div id="modalMessage" class="modal-body"></div>
   			<div class="modal-footer"></div>
   		</div>
+		
   		<div class="headerSection"> 
-			<img src="@routes.Assets.at("images/LOGOunitn.gif")" width="140" height="146" class="floatLeft" />
 			<img src="@routes.Assets.at("images/URP_medium.jpg")" width="150" height="179" class="floatRight" />
+			<!--<img src="@routes.Assets.at("images/LOGOunitn.gif")" width="140" height="146" class="floatLeft" />-->
 			<div class="brand"> 
 				<div class="brandTitle">  Agora 2.0 </div>
-				<h3>Uno strumento per la partecipazione civia </h3>
+				<div class="headerText">Uno strumento per la partecipazione civica</div>
 			</div>
 		</div>
 	<div class="headerdivider"></div>
   		
     	<div id="alert-area"></div>
-    	<div>
+    	<div id="main">
+			<div id="container" class="container_24">
+				<div class="mainbody">
+				
+				</div>
+			</div>
+		</div>
+		
     		@content
-    		<footer>
-        		<h6 align="center">Powered by IdeaScale /---/ University of Trento</h6>
-      		</footer>
+			
+	</div>
+    		<div id="footer">
+				<div class="container_24">
+					<div id="grid_8">
+						<div class="inside">
+							<div class="block">
+								<h3> Disclaimer: </h3>
+								<p> This application is for research purposes only and <a href="#">does not guarantee</a> any actions will be taken on the votes cast </p>
+								<div id="copyright">
+								<p>&copy; Agora 2.0 is a Project developed at University of Trento and is Powered by IdeaScale</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        		
+      		
     	</div>
-    	
+    
 	<!-- 
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -2,19 +2,20 @@
 
 img.floatLeft { 
     float: left; 
-	margin: 30px 0px 10px 100px; 
+
 }
 
 img.floatRight { 
     float: right; 
-	margin: 0px 100px 10px 0px;
+	
 }
 
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  background-color: #ffffff;
-}
-
+ background-color: #ffffff;
+  font: 85% "Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+  background-image:url('header_texture.jpg');
+  background-repeat:repeat-x;
+} 
 .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
@@ -88,24 +89,22 @@ margin: 0 auto;
 .headerdivider{
 clear:both;	
 padding:5px 0;	
-margin: 0 30px;
 border-bottom: solid 1px black;
-margin: 20px 40px 40px 20px;
+
+}
+
+.brandTitle  {
+	font-size: 60px;
+	font-weight: 100;
+	line-height: 1;
+	color: #000000;
+	text-align: left;	
 }
 
 .brand {
 
 margin: 0 auto;
 
-}
-
-.brandTitle  {
-	font-size: 100px;
-	font-weight: 100;
-	line-height: 1;
-	color: #000000;
-	text-align: center;
-	
 }
 
 .navbar .navbar-text {
