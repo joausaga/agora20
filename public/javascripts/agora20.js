@@ -19,9 +19,10 @@ function staticAlert (type, message) {
 }
 
 function modalWindow(message) {
-	$("#modalMessage").html("<h3 align=\"center\">"+ message +"</h3>");
+	$("#modalMessage").html("<h3 align=\"center\">"+ message +"</h3><br>");
+	//$("#modalMessage").html("<div class=\"label label-info\"><h4 align=\"center\">Score </h4><h3 align=\"center\">@ideaVotes</h3></div>");
 	$('#modalWindow').modal('show');
-	$('#modalWindow').delay(1500).fadeOut("slow", function () { $(this).modal('hide'); changeIdea(); });
+	$('#modalWindow').delay(1500).fadeOut("slow", function () { $(this).modal('hide'); changeIdea(false); });
 }
 
 function updateIdeaContent(data) {
@@ -56,7 +57,7 @@ function voteUp() {
 						});
 				jqxhr.error(function(){ newAlert('error', data.responseText); });
 			});
-	jqxhr.error(function(){ newAlert('error', data.responseText); });
+	jqxhr.error(function(data){ newAlert('error', data.responseText); });
 }
 
 function voteDown() {
@@ -69,18 +70,19 @@ function voteDown() {
 						function(data, textStatus, jqXHR) {
 							updateIdeaContent(data);
 						});
-				jqxhr.error(function(){ newAlert('error', data.responseText); });
+				jqxhr.error(function(data){ newAlert('error', data.responseText); });
 			});
-	jqxhr.error(function(){ newAlert('error', data.responseText); });
+	jqxhr.error(function(data){ newAlert('error', data.responseText); });
 }
 
-function changeIdea() {
+function changeIdea(e) {
 	var  jqxhr = $.get(
-			"/ideas/change", 
+			"/ideas/change/",
+			{event:e},
 			function(data, textStatus, jqXHR) {
 				updateIdeaContent(data);
 			});
-	jqxhr.error(function(){ newAlert('error', data.responseText); });
+	jqxhr.error(function(data){ staticAlert('error', data.responseText); });
 }
 
 $(document).ready(function() {
@@ -100,10 +102,10 @@ $(document).ready(function() {
 		}
 		else {
 			staticAlert('info', 'Retriving an idea, please wait');
-			changeIdea();
+			changeIdea(true);
 			$("#alert-area").empty();
 		}
 	});
 	/* Set a timer to change the ideas every 5 minutes */
-	window.setInterval(function() {changeIdea();}, 300000);
+	window.setInterval(function() {changeIdea(false);}, 300000);
 });

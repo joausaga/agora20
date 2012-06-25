@@ -9,9 +9,10 @@ GET     /                           	controllers.Application.index()
 GET     /ideas                  		controllers.Ideas.index() 
 POST    /ideas/voteUp                	controllers.Ideas.voteUp()
 POST    /ideas/voteDown                	controllers.Ideas.voteDown()
-GET     /ideas/change                	controllers.Ideas.change()
+GET     /ideas/change/            		controllers.Ideas.change(event:String)
 GET     /ideas/show              		controllers.Ideas.show()
 GET    /ideas/feedideas              	controllers.Ideas.feedIdeas()
+GET    /ideas/syncideas              	controllers.Ideas.syncIdeas()
 
 # Extra Information
 

@@ -3,6 +3,13 @@
 
 # --- !Ups
 
+create table audit (
+  id                        integer auto_increment not null,
+  event                     varchar(255),
+  datetime                  datetime,
+  constraint pk_audit primary key (id))
+;
+
 create table extra_info (
   id                        integer auto_increment not null,
   title                     varchar(255),
@@ -31,6 +38,8 @@ create index ix_extra_info_idea_1 on extra_info (idea_id);
 # --- !Downs
 
 SET FOREIGN_KEY_CHECKS=0;
+
+drop table audit;
 
 drop table extra_info;
 

@@ -1,6 +1,7 @@
 package controllers;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,8 +26,10 @@ import com.avaje.ebean.Ebean;
 
 import models.ExtraInfo;
 import models.Idea;
+import models.Audit;
 import play.Play;
 import play.data.Form;
+import play.data.format.Formats.DateTime;
 import play.libs.F.Function;
 import play.libs.Json;
 import play.libs.WS;
@@ -43,6 +46,7 @@ public class Ideas extends Controller {
 	
 	static Form<Idea> ideaForm = form(Idea.class);
 	static final String API_TOKEN = "5b3326f8-50a5-419d-8f02-eef6a42fd61a";
+	static final String COMMUNITY_NAME = "fiveheads";
 	static Idea currentIdea = null;
 	
 	public static boolean existsIdea() {
@@ -95,12 +99,47 @@ public class Ideas extends Controller {
 	 * @throws TimeoutException
 	 */
 	public static Response getRecentIdeas() throws TimeoutException {
-		WSRequestHolder request = WS.url("http://fiveheads.ideascale.com/a/rest/v1/ideas/recent")
+		WSRequestHolder request = WS.url("http://"+COMMUNITY_NAME+".ideascale.com/a/rest/v1/ideas/recent")
 				.setHeader("api_token", API_TOKEN);
 		Response response = request.get().get();
 		return response;
 	}
-
+	
+	/**
+	 * Get all ideas from IdeaScale.com
+	 * @return request response
+	 * @throws TimeoutException
+	 */
+	public static ArrayList<JsonNode> getAllIdeas() throws TimeoutException {
+		WSRequestHolder request = WS.url("http://"+COMMUNITY_NAME+".ideascale.com/a/rest/v1/campaigns")
+									.setHeader("api_token", API_TOKEN);
+		Response response = request.get().get();
+		ArrayList<JsonNode> allIdeas = new ArrayList<JsonNode>();
+		if (response.getStatus() == 200) {
+    		Iterator<JsonNode> campaigns = response.asJson().getElements(); 
+    		while(campaigns.hasNext()) {
+    			JsonNode campaign = campaigns.next();
+    			Long campaignId = campaign.findPath("id").getLongValue();
+    			WSRequestHolder requestIdeas = WS.url("http://"+COMMUNITY_NAME+".ideascale.com/a/rest/v1/campaigns/"+campaignId+"/ideas")
+    											 .setHeader("api_token", API_TOKEN);
+    			Response responseIdeas = requestIdeas.get().get();
+    			if (responseIdeas.getStatus() == 200) {
+    				Iterator<JsonNode> ideas = response.asJson().getElements();
+    				while(ideas.hasNext()) {
+    					allIdeas.add(ideas.next());
+    				}
+    			}
+    			else {
+    				Logger.error("Something wrong with the request to obtain all the ideas from the campaign " + campaignId.toString());
+    			}
+    		}
+		}
+		else {
+			Logger.error("Something wrong with the request to obtain all the ideas from IdeaScale");
+		}
+		return allIdeas;
+	}
+	
 	/**
 	 * Get idea information about a particular idea from IdeaScale.com
 	 * @param ideaId ideaScale id 
@@ -116,7 +155,7 @@ public class Ideas extends Controller {
 	
 	public static Result getIdea(Long ideaId) {
         return async(
-        		WS.url("http://fiveheads.ideascale.com/a/rest/v1/ideas/" + ideaId)
+        		WS.url("http://"+COMMUNITY_NAME+".ideascale.com/a/rest/v1/ideas/" + ideaId)
 				  .setHeader("api_token", API_TOKEN).get()
 					  .map(
 						  new Function<WS.Response, Result>() {
@@ -156,7 +195,7 @@ public class Ideas extends Controller {
     
     public static Result sendVote(String vote, String voteType) {
         return async(
-            WS.url("http://fiveheads.ideascale.com/a/rest/v1/ideas/"+ 
+            WS.url("http://"+COMMUNITY_NAME+".ideascale.com/a/rest/v1/ideas/"+ 
 					  currentIdea.idScale +"/vote/" + voteType)
 					  .setHeader("api_token", API_TOKEN).post(vote)
 					  .map(
@@ -186,6 +225,7 @@ public class Ideas extends Controller {
     		sendVote("{ \"myVote\":1 }","up");
     	}
     	currentIdea.updateScore(1);
+    	registerEvent("VOTEUP");
     	return ok("Grazie!, Il tuo voto e stato registrato");
     }
     
@@ -202,6 +242,7 @@ public class Ideas extends Controller {
     		sendVote("{ \"myVote\":-1 }","down");
     	}
     	currentIdea.updateScore(-1);
+    	registerEvent("VOTEDOWN");
     	return ok("Grazie!, Il tuo voto e stato registrato");
     }
 
@@ -209,7 +250,7 @@ public class Ideas extends Controller {
      * Get a new idea from the local database
      * @return 
      */
-    public static Result change() {
+    public static Result change(String event) {
     		currentIdea = getLocalIdea();
     		feedVotes();
     		ObjectNode result = Json.newObject();
@@ -225,6 +266,9 @@ public class Ideas extends Controller {
             else {
             	result.put("eiTitle", "");
             	result.put("eiContent", "");
+            }
+            if (event.equals("true")) {
+            	registerEvent("CHANGEIDEA");
             }
             return ok(result);
     }
@@ -279,6 +323,42 @@ public class Ideas extends Controller {
 		}
     }
     
+    private static void deleteAllIdeas() {
+    	if (!Idea.all().isEmpty()) {
+	    	for (Idea i : Idea.all()) {
+	    		Idea.delete(i.id);
+	    	}
+    	}
+    }
+    
+    public static Result syncIdeas() {
+		try {
+			deleteAllIdeas();
+			ArrayList<JsonNode> allIdeas = getAllIdeas();
+			for (JsonNode idea : allIdeas) {			
+				Idea i = new Idea();
+				i.content = idea.findPath("text").getTextValue();
+				i.title = idea.findPath("title").getTextValue();
+				i.score = idea.findPath("voteCount").getIntValue();
+				i.author = idea.findPath("name").getTextValue();
+				i.idScale = idea.findPath("id").getLongValue();
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				String ideaDate = idea.findPath("creationDateTime").
+						getTextValue().split("T")[0];
+				try {
+					i.date = new Date(dateFormat.parse(ideaDate).
+							getTime());
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}				
+			}
+			return redirect("/ideas");
+		} catch (TimeoutException e1) {
+			Logger.error("Something wrong with the request to obtain new ideas from IdeaScale");
+			return ok("Problems when feeting new ideas from IdeaScale.com");
+		}
+    }
+    
     public static void feedVotes() {
     	if (!existsIdea()) {
 			currentIdea = getLocalIdea();
@@ -293,5 +373,14 @@ public class Ideas extends Controller {
     	if (ideaId == currentIdea.idScale) {
     		currentIdea.updateScore(currentScore);
     	}
+    }
+    
+    public static boolean registerEvent(String event) {
+    	Audit audit = new Audit();
+    	audit.event=event;
+    	java.util.Date date= new java.util.Date();
+    	audit.datetime=new Timestamp(date.getTime());
+    	Audit.create(audit);
+    	return true;
     }
 }
