@@ -323,34 +323,55 @@ public class Ideas extends Controller {
 		}
     }
     
-    private static void deleteAllIdeas() {
+    private static void deleteUnexistedIdeas(ArrayList<JsonNode> existedIdeas) {
     	if (!Idea.all().isEmpty()) {
-	    	for (Idea i : Idea.all()) {
-	    		Idea.delete(i.id);
-	    	}
+    		for (Idea localIdea : Idea.all()) {
+    			boolean alreadyExists = false;
+    			for (JsonNode remoteIdea : existedIdeas) {
+    				Long remoteIdeaId = remoteIdea.findPath("id").getLongValue();
+    				if (localIdea.idScale == remoteIdeaId) {
+    					alreadyExists = true;
+    					break;
+    				}
+    			}
+    			if (!alreadyExists) {
+    				Idea.delete(localIdea.id);
+    			}
+    		}
     	}
     }
     
     public static Result syncIdeas() {
 		try {
-			deleteAllIdeas();
 			ArrayList<JsonNode> allIdeas = getAllIdeas();
-			for (JsonNode idea : allIdeas) {			
-				Idea i = new Idea();
-				i.content = idea.findPath("text").getTextValue();
-				i.title = idea.findPath("title").getTextValue();
-				i.score = idea.findPath("voteCount").getIntValue();
-				i.author = idea.findPath("name").getTextValue();
-				i.idScale = idea.findPath("id").getLongValue();
-				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				String ideaDate = idea.findPath("creationDateTime").
-						getTextValue().split("T")[0];
-				try {
-					i.date = new Date(dateFormat.parse(ideaDate).
-							getTime());
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}				
+			deleteUnexistedIdeas(allIdeas);
+			for (JsonNode idea : allIdeas) {
+				Long ideaId = idea.findPath("id").getLongValue();
+    			if (Idea.find.where().eq("id_scale", ideaId).
+    					findRowCount() == 0) {
+    				Idea i = Idea.find.where().eq("id_scale", ideaId).findList().get(0);
+    				i.content = idea.findPath("text").getTextValue();
+    				i.title = idea.findPath("title").getTextValue();
+    				i.score = i.score + idea.findPath("voteCount").getIntValue();
+    				i.update();
+    			}
+    			else {
+					Idea i = new Idea();
+					i.content = idea.findPath("text").getTextValue();
+					i.title = idea.findPath("title").getTextValue();
+					i.score = idea.findPath("voteCount").getIntValue();
+					i.author = idea.findPath("name").getTextValue();
+					i.idScale = idea.findPath("id").getLongValue();
+					DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					String ideaDate = idea.findPath("creationDateTime").
+							getTextValue().split("T")[0];
+					try {
+						i.date = new Date(dateFormat.parse(ideaDate).
+								getTime());
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+    			}
 			}
 			return redirect("/ideas");
 		} catch (TimeoutException e1) {
