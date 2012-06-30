@@ -16,8 +16,7 @@
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <style type="text/css">
       		body {
-        		padding-top: 60px;
-        		padding-bottom: 40px;
+        		padding-top: 60px;  		
       		}
     	</style>
     	<link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap-responsive.min.css")">
@@ -29,33 +28,37 @@
     </head>
     <body>
     	<div id="outerContainer">
-			<div class="modal hide" id="modalWindow">
-	  			<div class="modal-header label label-success">
-	    			<button type="button" class="close" data-dismiss="modal">×</button>
-	    			<h2>Agora 2.0</h2>
-	  			</div>
-	  			<div id="modalMessage" class="modal-body"></div>
-	  			<div class="modal-footer"></div>
-	  		</div>
+		<div class="modal hide" id="modalWindow">
+  			<div class="modal-header label label-success">
+    			<button type="button" class="close" data-dismiss="modal">×</button>
+    			<h2>Agora 2.0</h2>
+  			</div>
+  			<div id="modalMessage" class="modal-body"></div>
+  			<div class="modal-footer"></div>
+  		</div>
 		
-	  		<div class="headerSection"> 
-				<img src="@routes.Assets.at("images/URP_medium.jpg")" width="150" height="179" class="floatRight" />
-				<!--<img src="@routes.Assets.at("images/LOGOunitn.gif")" width="140" height="146" class="floatLeft" />-->
-				<div class="brand"> 
-					<div class="brandTitle">  Agora 2.0 </div>
-					<div class="headerText">Uno strumento per la partecipazione civica</div>
+  		<div class="headerSection"> 
+			<img src="@routes.Assets.at("images/URP_medium.jpg")" width="150" height="179" class="floatRight" />
+			<!--<img src="@routes.Assets.at("images/LOGOunitn.gif")" width="140" height="146" class="floatLeft" />-->
+			<div class="brand"> 
+				<div class="brandTitle">  Agora 2.0 </div>
+				<div class="headerText">Uno strumento per la partecipazione civica</div>
+			</div>
+		</div>
+	<div class="headerdivider"></div>
+  		
+    	<div id="alert-area"></div>
+    	<div id="main">
+			<div id="container" class="container_24">
+				<div class="mainbody">
+				
 				</div>
 			</div>
-			<div class="headerdivider"></div>
-    		<div id="alert-area"></div>
-    		<div id="main">
-				<div id="ideaContainer" class="container_24">
-					<div class="mainbody">
-						@content	
-					</div>
-				</div>
-			</div>			
 		</div>
+		
+    		@content
+			
+	</div>
     		<div id="footer">
 				<div class="container_24">
 					<div id="grid_8">

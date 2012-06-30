@@ -43,6 +43,10 @@ p {
 	margin: 0px 0px 0px 0px;
 }
 
+#ideaText{
+display: block;
+height: 250px;
+}
 .hentry {
     margin-bottom: 15px;
 }
@@ -112,6 +116,7 @@ h3 {
     font-size: 1.6em;
     line-height: 1;
 	text-align: left;
+	font-weight: bold;
 }
 h4 {
     color: #1E2226;
