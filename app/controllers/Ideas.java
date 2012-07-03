@@ -47,6 +47,10 @@ public class Ideas extends Controller {
 	static Form<Idea> ideaForm = form(Idea.class);
 	static final String API_TOKEN = "5b3326f8-50a5-419d-8f02-eef6a42fd61a";
 	static final String COMMUNITY_NAME = "fiveheads";
+	//static final String COMMUNITY_NAME = "agoratrento";
+	//static final String API_TOKEN = "54a0840e-17b7-4f82-9243-07d1380e7e17";
+	//static final String COMMUNITY_NAME = "agoraunitn";
+	//static final String API_TOKEN = "11c2b8fb-9cc5-4dae-afd3-cf03abb8ecf1";
 	static Idea currentIdea = null;
 	
 	public static boolean existsIdea() {
@@ -120,12 +124,14 @@ public class Ideas extends Controller {
     		while(campaigns.hasNext()) {
     			JsonNode campaign = campaigns.next();
     			Long campaignId = campaign.findPath("id").getLongValue();
-    			WSRequestHolder requestIdeas = WS.url("http://"+COMMUNITY_NAME+".ideascale.com/a/rest/v1/campaigns/"+campaignId+"/ideas")
+    			WSRequestHolder requestIdeas = WS.url("http://"+COMMUNITY_NAME+".ideascale.com/a/rest/v1/campaigns/"+
+    												  campaignId+"/ideas")
     											 .setHeader("api_token", API_TOKEN);
     			Response responseIdeas = requestIdeas.get().get();
     			if (responseIdeas.getStatus() == 200) {
-    				Iterator<JsonNode> ideas = response.asJson().getElements();
+    				Iterator<JsonNode> ideas = responseIdeas.asJson().getElements();
     				while(ideas.hasNext()) {
+    					Logger.info("Idea: " + ideas.next().toString());
     					allIdeas.add(ideas.next());
     				}
     			}
@@ -348,7 +354,7 @@ public class Ideas extends Controller {
 			for (JsonNode idea : allIdeas) {
 				Long ideaId = idea.findPath("id").getLongValue();
     			if (Idea.find.where().eq("id_scale", ideaId).
-    					findRowCount() == 0) {
+    					findRowCount() > 0) {
     				Idea i = Idea.find.where().eq("id_scale", ideaId).findList().get(0);
     				i.content = idea.findPath("text").getTextValue();
     				i.title = idea.findPath("title").getTextValue();
