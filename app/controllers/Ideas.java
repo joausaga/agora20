@@ -66,7 +66,7 @@ public class Ideas extends Controller {
 		if (!existsIdea()) {
 			currentIdea = getLocalIdea();
 		}
-		ExtraInfo ei = currentIdea.extraInfo(); 
+		ExtraInfo ei = currentIdea.extraInfo();
 		if (ei != null) {
 			return ok(views.html.idea.render(currentIdea.title,currentIdea.content,
 					  currentIdea.author,currentIdea.score,ei.title, ei.content));
@@ -131,7 +131,6 @@ public class Ideas extends Controller {
     			if (responseIdeas.getStatus() == 200) {
     				Iterator<JsonNode> ideas = responseIdeas.asJson().getElements();
     				while(ideas.hasNext()) {
-    					Logger.info("Idea: " + ideas.next().toString());
     					allIdeas.add(ideas.next());
     				}
     			}

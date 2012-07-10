@@ -24,4 +24,8 @@ public class Application extends Controller {
 		return redirect(routes.Ideas.index());
 	}
 	
+	public static Result projectPresentation() {
+		return ok(views.html.presentation.render());
+	}
+	
 }
