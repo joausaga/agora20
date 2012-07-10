@@ -14,6 +14,9 @@ GET     /ideas/show              		controllers.Ideas.show()
 GET    /ideas/feedideas              	controllers.Ideas.feedIdeas()
 GET    /ideas/syncideas              	controllers.Ideas.syncIdeas()
 
+#Project Presentation
+GET    /presentation              		controllers.Application.projectPresentation()
+
 # Extra Information
 
 # ExtraInfo list (look at the default values for pagination parameters)
