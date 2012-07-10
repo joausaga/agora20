@@ -26,7 +26,7 @@ function modalWindow(message) {
 }
 
 function updateIdeaContent(data) {
-	if (data["score"] == 0) {
+	/*if (data["score"] == 0) {
 		$("#ideaScore").attr("class", "label label-info");
 	}
 	else {
@@ -36,11 +36,11 @@ function updateIdeaContent(data) {
 		else {
 			$("#ideaScore").attr("class", "label label-important");
 		}
-	}
-	//$("#ideaScore").html("<h4 align=\"center\">Score </h4><h3 align=\"center\">" +  data["score"] + "</h3>");
+	}*/
 	$("#ideaTitle").html("<h1 align=\"center\">"+data["title"]+"</h1>");
 	$("#ideaText").html("<h2 align=\"center\">"+data["content"]+"</h2>");
-	$("#ideaAuthor").html("<h4 align=\"left\"> Disclaimer: " + data["author"] + "</h4>");
+	//$("#ideaAuthor").html("<h4 align=\"left\"> Disclaimer: " + data["author"] + "</h4>");
+	$("#ideaScore").html("<h3> Punteggio: " + data["score"]  + "</h3>");
 	$("#extraInfoTitle").html("<h3 align=\"center\">"+ data["eiTitle"] +"</h3>");
 	$("#extraInfoContent").html("<p>"+ data["eiContent"] +"</p>");
 }
