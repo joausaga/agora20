@@ -36,6 +36,17 @@ display: block;
 text-align:left;
 }
 
+.extraInfoContainer{
+clear: both;
+width:90%;
+margin-top: 0px;
+margin-left: 25px;
+padding: 6px 50px;
+text-align: left;
+display: block;
+text-align:left;
+}
+
 p {
 	font-family: "Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
     font-size: 1.20em;
@@ -98,12 +109,22 @@ h1 {
 
 .h3Static {
     color: #2E2318;
-    font-size: 1.6em;
+    font-size: 2.0em;
     line-height: 1;
 	margin-top: 1.25em;
 	margin-bottom: 1.25em;  
 	text-align: left;
 }
+
+.h4Static {
+     color: #FFFFFF;
+    font-size: 1.5em;
+    line-height: 1;
+	margin-top: 1.25em;
+	margin-bottom: 1.25em;  
+	text-align: left;
+}
+
 h2 {
     color: #635144;
     font-size: 2.0em;
@@ -139,7 +160,18 @@ h6 {
 	text-align: left;
 }
 
+ul{ font: 85% "Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+color:#656561;
+}
 
+li{
+font-size: 1.5em;
+line-height: 22px;
+}
+.extraInfoText{
+color:#A5A28F;
+font-size: 1.3em;
+}
 
 .mainbody {
     margin-bottom: 15px;
@@ -159,32 +191,31 @@ h6 {
 	
 }
 
+
 a.button {
-    background-color: #F5F5F0;
+    background-color: #F5F6CE;
     border-radius: 8px 8px 8px 8px;
+    display: block;
     float: left;
+    font-size: 1.7em;
     font-weight: bold;
-    text-decoration: none;
-	width: 200px;
-	display: block;
-	margin: 5px 10px;
-    padding: 16px;
+    height: 50px;
+    margin: 5px 1%;
+    padding: 50px 16px;
     text-align: center;
+    text-decoration: none;
+    width: 27%;
 }
 
 
-
-#footer {
-    background: url("footerbg.png") repeat-x scroll center top #2E2318;
-    color: #A5A28F;
-   
-}
 
 #footer {
     clear: both;
-    height: 200px;
+    background: url("footerbg.png") repeat-x scroll center top #2E2318;
+    color: #A5A28F;
     margin-top: -200px;
     position: relative;
+	height: 200px;
 }
 #footer h1, #footer h2 {
     color: #FFFFFF;
@@ -196,13 +227,13 @@ a.button {
     color: #FFFFFF;
     font-size: 1.5em;
     font-size: 1.5em;
-	text-align: center;
+	text-align: left;
 }
 
 #footer p {
 	font-size: 1.2em;
     line-height: 150%;
-	text-align: center;
+
 	padding-top: 10px;
 }
 
@@ -214,26 +245,32 @@ a.button {
     padding-top: 14px;
 }
 .container_24 {
-    margin-left: auto;
-    margin-right: auto;
-	text-align: center;
-    width: 960px;
-}
-.container_24 .grid_8 {
-    width: 310px;
+	margin: 0 auto;
+	text-align: left;
+	height: 150px;
 }
 
-#footer .grid_8 .inside {
-    line-height: 150%;
-    padding: 0 10px;
+.footerBoxContainer{
+margin: 0 auto;
+width: 1180px;
 }
-.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12, .grid_13, .grid_14, .grid_15, .grid_16, .grid_17, .grid_18, .grid_19, .grid_20, .grid_21, .grid_22, .grid_23, .grid_24 {
+
+
+.extraInfoBox, .disclaimerBox{
+	width: 550px;
     display: inline;
-    float: left;
-    margin-left: 5px;
-    margin-right: 5px;
-    position: relative;
+	margin: 0 20px;
+	position: relative;
 }
+
+.extraInfoBox{
+float: left;
+}
+
+.disclaimerBox{
+
+}
+
 div.small {
     border-bottom: 1px solid #EEEAE0;
     color: #888888;
@@ -245,9 +282,45 @@ div.small {
 
 
 
-#copyright {
+.copyright {
 	padding-top: 25px;
     font-size: 15px;
 	color:#A5A28F;
     text-align: center;
+	margin: 10px auto;
+}
+
+.label, .badge {
+    color: #000000;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 14px;
+}
+
+.label-success, .badge-success {
+    background-color: #FFFFFF	;
+}
+
+
+.modal-header h2 {
+    background-color: #F5F6CE;
+    color: #000000;
+    font-size: 1.65em;
+    margin-bottom: 0.75em;
+    padding: 8px;
+}
+
+.modal-body h3 {
+	color: #000000;
+    font-size: 1.6em;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+}
+
+
+.modal-body {
+    height: 50px;
+    overflow-y: auto;
+    padding: 15px;
 }
