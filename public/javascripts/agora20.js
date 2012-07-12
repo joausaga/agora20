@@ -18,8 +18,15 @@ function staticAlert (type, message) {
     $(".alert").alert();
 }
 
-function modalWindow(message) {
-	$("#modalMessage").html("<h3 align=\"center\">"+ message +"</h3><br>");
+function modalWindow(message, voteType) {
+	if (voteType == "agree") {
+		$("#modalHeader").attr("class", "modal-header-agree");
+		$("#modalMessage").html("<img src=\"/assets/images/approve.png\" /> " + message + "<br>");
+	}
+	else {
+		$("#modalHeader").attr("class", "modal-header-disagree");
+		$("#modalMessage").html("<img src=\"/assets/images/disapprove.png\" /> " + message + "<br>");
+	}
 	//$("#modalMessage").html("<div class=\"label label-info\"><h4 align=\"center\">Score </h4><h3 align=\"center\">@ideaVotes</h3></div>");
 	$('#modalWindow').modal('show');
 	$('#modalWindow').delay(1500).fadeOut("slow", function () { $(this).modal('hide'); changeIdea(false); });
@@ -49,7 +56,7 @@ function voteUp() {
 	var  jqxhr = $.post(
 			"/ideas/voteUp", 
 			function(data, textStatus, jqXHR) {
-				modalWindow(data);
+				modalWindow(data,"agree");
 				var  jqxhr = $.get(
 						"/ideas/show", 
 						function(data, textStatus, jqXHR) {
@@ -64,7 +71,7 @@ function voteDown() {
 	var  jqxhr = $.post(
 			"/ideas/voteDown", 
 			function(data, textStatus, jqXHR) {
-				modalWindow(data);
+				modalWindow(data,"disagree");
 				var  jqxhr = $.get(
 						"/ideas/show", 
 						function(data, textStatus, jqXHR) {
