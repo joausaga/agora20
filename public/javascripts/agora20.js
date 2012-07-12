@@ -40,7 +40,7 @@ function updateIdeaContent(data) {
 	$("#ideaTitle").html("<h1 align=\"center\">"+data["title"]+"</h1>");
 	$("#ideaText").html("<h2 align=\"center\">"+data["content"]+"</h2>");
 	//$("#ideaAuthor").html("<h4 align=\"left\"> Disclaimer: " + data["author"] + "</h4>");
-	$("#ideaScore").html("<h3> Punteggio: " + data["score"]  + "</h3>");
+	$("#ideaScore").html("Feedback Score<br>" + data["score"]);
 	$("#extraInfoTitle").html("<h3 align=\"center\">"+ data["eiTitle"] +"</h3>");
 	$("#extraInfoContent").html("<p>"+ data["eiContent"] +"</p>");
 }
