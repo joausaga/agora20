@@ -56,8 +56,8 @@ p {
 
 #ideaText{
 display: block;
-height: 300px;
 }
+
 .hentry {
     margin-bottom: 15px;
 }
@@ -191,6 +191,62 @@ font-size: 1.3em;
 	
 }
 
+.score {
+	background-color: #427FC0;
+    border-radius: 8px 8px 8px 8px;
+    font-size: 1.7em;
+    font-weight: bold;
+    color: #FFFFFF;
+    height: 35px;
+    padding: 5px 10px 25px;
+    text-align: center;
+    width: 25%;	
+}
+
+a.buttonGreen {
+    background-color: #85B245;
+    border-radius: 8px 8px 8px 8px;
+    display: block;
+    float: left;
+    font-size: 1.7em;
+    font-weight: bold;
+    height: 48px;
+    margin: 5px 1%;
+    padding: 50px 16px;
+    text-align: center;
+    text-decoration: none;
+    width: 25%;
+}
+
+a.buttonOrange {
+    background-color: #C98736;
+    border-radius: 8px 8px 8px 8px;
+    display: block;
+    float: left;
+    font-size: 1.7em;
+    font-weight: bold;
+    height: 48px;
+    margin: 5px 1%;
+    padding: 50px 16px;
+    text-align: center;
+    text-decoration: none;
+    width: 25%;
+}
+
+a.buttonRed {
+    background-color: #B94A48;
+    border-radius: 8px 8px 8px 8px;
+    display: block;
+    float: left;
+    font-size: 1.7em;
+    font-weight: bold;
+    height: 48px;
+    margin: 5px 1%;
+    padding: 50px 16px;
+    text-align: center;
+    text-decoration: none;
+    width: 25%;
+}
 
 a.button {
     background-color: #F5F6CE;
@@ -210,12 +266,9 @@ a.button {
 
 
 #footer {
-    clear: both;
     background: url("footerbg.png") repeat-x scroll center top #2E2318;
     color: #A5A28F;
-    margin-top: -200px;
-    position: relative;
-	height: 200px;
+    margin-top: 25px;
 }
 #footer h1, #footer h2 {
     color: #FFFFFF;
@@ -233,8 +286,7 @@ a.button {
 #footer p {
 	font-size: 1.2em;
     line-height: 150%;
-
-	padding-top: 10px;
+    paddig-bottom: 10px;
 }
 
 #footer a {
@@ -284,10 +336,10 @@ div.small {
 
 .copyright {
 	padding-top: 25px;
-    font-size: 15px;
+	padding-bottom: 10px;
+    font-size: 12px;
 	color:#A5A28F;
     text-align: center;
-	margin: 10px auto;
 }
 
 .label, .badge {
