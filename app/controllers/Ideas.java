@@ -231,7 +231,7 @@ public class Ideas extends Controller {
     	}
     	currentIdea.updateScore(1);
     	registerEvent("VOTEUP");
-    	return ok("Thank you! Your vote has been registered");
+    	return ok("You AGREED with the idea");
     }
     
     /**
@@ -248,7 +248,7 @@ public class Ideas extends Controller {
     	}
     	currentIdea.updateScore(-1);
     	registerEvent("VOTEDOWN");
-    	return ok("Thank you! Your vote has been registered");
+    	return ok("You DISAGREED with the idea");
     }
 
     /**
