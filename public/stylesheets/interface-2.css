@@ -330,37 +330,40 @@ div.small {
     text-align: center;
 }
 
-.label, .badge {
+.badge {
     color: #000000;
     font-size: 1.5em;
     font-weight: bold;
     line-height: 14px;
 }
 
-.label-success, .badge-success {
-    background-color: #FFFFFF	;
+.badge-success {
+    background-color: #FFFFFF;
 }
 
-
-.modal-header h2 {
-    background-color: #F5F6CE;
-    color: #000000;
-    font-size: 1.65em;
-    margin-bottom: 0.75em;
-    padding: 8px;
+.modal-header-agree {
+	color: #FFFFFF;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: #85B245;
+	padding-top:5px;
+	padding-bottom:5px;
+	text-align: center;
 }
 
-.modal-body h3 {
-	color: #000000;
-    font-size: 1.6em;
-    font-weight: bold;
-    line-height: 1;
-    text-align: center;
+.modal-header-disagree {
+	color: #FFFFFF;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: #B94A48;
+	padding-top:5px;
+	padding-bottom:5px;
+	text-align: center;
 }
-
 
 .modal-body {
-    height: 50px;
-    overflow-y: auto;
-    padding: 15px;
+	color: #000000;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
 }
