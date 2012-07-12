@@ -28,66 +28,35 @@
     </head>
     <body>
     	<div id="outerContainer">
-		<div class="modal hide" id="modalWindow">
-  			<div class="modal-header label label-success">
-    			<button type="button" class="close" data-dismiss="modal">×</button>
-    			<h2>Agora 2.0</h2>
-  			</div>
-  			<div id="modalMessage" class="modal-body"></div>
-  			<div class="modal-footer"></div>
-  		</div>
+			<div class="modal hide" id="modalWindow">
+	  			<div class="modal-header label label-success">
+	    			<button type="button" class="close" data-dismiss="modal">×</button>
+	    			<h2>Agora 2.0</h2>
+	  			</div>
+	  			<div id="modalMessage" class="modal-body"></div>
+	  			<div class="modal-footer"></div>
+	  		</div>
 		
-  		<div class="headerSection"> 
-			<img src="@routes.Assets.at("images/LOGOunitn.png")" width="180" height="179" class="floatRight" />
-			<!--<img src="@routes.Assets.at("images/LOGOunitn.gif")" width="140" height="146" class="floatLeft" />-->
-			<div class="brand"> 
-				<div class="brandTitle">  Agora 2.0 </div>
-				<div class="headerText">A tool to support civic participation</div>
-			</div>
-		</div>
-	<div class="headerdivider"></div>
-  		
-    	<div id="alert-area"></div>
-    	<div id="main">
-			<div id="container" class="container_24">
-				<div class="mainbody">
-				
+	  		<div class="headerSection"> 
+				<img src="@routes.Assets.at("images/unitn_logo.jpg")" class="floatRight" />
+				<!--<img src="@routes.Assets.at("images/LOGOunitn.gif")" width="140" height="146" class="floatLeft" />-->
+				<div class="brand"> 
+					<div class="brandTitle">  Agora 2.0 </div>
+					<div class="headerText">A tool to support civic participation</div>
 				</div>
 			</div>
-		</div>
-		
-    		@content
-			
+			<div class="headerdivider"></div>
+    		<br><br>
+    		<div id="alert-area"></div>
+			<div id="container" >@content</div>
 	</div>
-
 	<div id="footer">
-	<div class="container_24">
-		<div class="footerBoxContainer">
-			<div class="extraInfoBox">
-				<h3>About Agora 2.0: </h3>			
-				<p> Agora2.0 is a voting platform for ideas on common interests of the academic community. Ideas can be posted, and voted on, online at agoraunitn.ideascale.it, or voted on using this public screen. 
-				</p> <p>Express your opinion! Be part of a democratic debate of ideas!
-				</p>                                                                                                                                                                                                                                                                                                              
-			</div>
-			
-			<div class="disclaimerBox">			
-				<h3>Disclaimer: </h3>			
-				<p>This application is for research purposes only and <a href="#">does not guarantee</a> any actions will be taken on the votes cast.</p>                                                                                                                                                                                                                                                                                                                   
-			</div>
-			  
-		</div>
-		<div class="clear"></div>
-		
 			<div class="copyright">
 				<p>&copy; Agora 2.0 is a Project developed at University of Trento and is Powered by IdeaScale</p>
 			</div>
 		
-	</div><!--/container-->   
-</div>
+		</div><!--/container-->   
 			
-        		
-
-    
 	<!-- 
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
