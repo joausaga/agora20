@@ -33,14 +33,10 @@ function modalWindow(message, type) {
 	}
 	//$("#modalMessage").html("<div class=\"label label-info\"><h4 align=\"center\">Score </h4><h3 align=\"center\">@ideaVotes</h3></div>");
 	$('#modalWindow').modal('show');
-	$('#modalWindow').delay(1500).fadeOut(
-			"slow", 
-			function () { 
-				$(this).modal('hide'); 
-				if (type != "change")
-					changeIdea(false);
-			}
-	);
+	if (type != "change")
+		$('#modalWindow').delay(1500).fadeOut("slow", function () { $(this).modal('hide'); changeIdea(false); });
+	else
+		$('#modalWindow').delay(400).fadeOut("slow", function () { $(this).modal('hide'); });
 }
 
 function updateIdeaContent(data) {
