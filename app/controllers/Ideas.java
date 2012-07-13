@@ -275,6 +275,7 @@ public class Ideas extends Controller {
             if (event.equals("true")) {
             	registerEvent("CHANGEIDEA");
             }
+            result.put("message", "A new idea was selected");
             return ok(result);
     }
     
