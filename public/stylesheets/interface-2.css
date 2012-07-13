@@ -361,6 +361,16 @@ div.small {
 	text-align: center;
 }
 
+.modal-header-change {
+	color: #FFFFFF;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: #C98736;
+	padding-top:5px;
+	padding-bottom:5px;
+	text-align: center;
+}
+
 .modal-body {
 	color: #000000;
 	font-size: 25px;
