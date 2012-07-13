@@ -36,7 +36,7 @@ function modalWindow(message, type) {
 	if (type != "change")
 		$('#modalWindow').delay(1500).fadeOut("slow", function () { $(this).modal('hide'); changeIdea(false); });
 	else
-		$('#modalWindow').delay(500).fadeOut("slow", function () { $(this).modal('hide'); });
+		$('#modalWindow').delay(700).fadeOut("slow", function () { $(this).modal('hide'); });
 }
 
 function updateIdeaContent(data) {
