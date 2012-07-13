@@ -18,18 +18,29 @@ function staticAlert (type, message) {
     $(".alert").alert();
 }
 
-function modalWindow(message, voteType) {
-	if (voteType == "agree") {
+function modalWindow(message, type) {
+	if (type == "agree") {
 		$("#modalHeader").attr("class", "modal-header-agree");
 		$("#modalMessage").html("<img src=\"/assets/images/approve.png\" /> " + message + "<br>");
 	}
-	else {
+	else if (type == "disagree"){
 		$("#modalHeader").attr("class", "modal-header-disagree");
 		$("#modalMessage").html("<img src=\"/assets/images/disapprove.png\" /> " + message + "<br>");
 	}
+	else {
+		$("#modalHeader").attr("class", "modal-header-change");
+		$("#modalMessage").html("<img src=\"/assets/images/bulb.png\" widht=\"48\" height=\"48\" /> " + message + "<br>");
+	}
 	//$("#modalMessage").html("<div class=\"label label-info\"><h4 align=\"center\">Score </h4><h3 align=\"center\">@ideaVotes</h3></div>");
 	$('#modalWindow').modal('show');
-	$('#modalWindow').delay(1500).fadeOut("slow", function () { $(this).modal('hide'); changeIdea(false); });
+	$('#modalWindow').delay(1500).fadeOut(
+			"slow", 
+			function () { 
+				$(this).modal('hide'); 
+				if (type != "change")
+					changeIdea(false);
+			}
+	);
 }
 
 function updateIdeaContent(data) {
@@ -87,6 +98,8 @@ function changeIdea(e) {
 			"/ideas/change/",
 			{event:e},
 			function(data, textStatus, jqXHR) {
+				if (e)
+					modalWindow(data["message"],"change");
 				updateIdeaContent(data);
 			});
 	jqxhr.error(function(data){ staticAlert('error', data.responseText); });
@@ -108,11 +121,11 @@ $(document).ready(function() {
 			voteUp();
 		}
 		else {
-			staticAlert('info', 'Retriving an idea, please wait');
+			//staticAlert('info', 'Retriving an idea, please wait');
 			changeIdea(true);
-			$("#alert-area").empty();
+			//$("#alert-area").empty();
 		}
 	});
 	/* Set a timer to change the ideas every 5 minutes */
-	window.setInterval(function() {changeIdea(false);}, 300000);
+	//window.setInterval(function() {changeIdea(false);}, 300000);
 });
