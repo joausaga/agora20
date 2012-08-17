@@ -230,7 +230,7 @@ public class Ideas extends Controller {
     		sendVote("{ \"myVote\":1 }","up");
     	}
     	currentIdea.updateScore(1);
-    	registerEvent("VOTEUP");
+    	registerEvent("VOTEUP", currentIdea);
     	return ok("You AGREED with the idea");
     }
     
@@ -247,7 +247,7 @@ public class Ideas extends Controller {
     		sendVote("{ \"myVote\":-1 }","down");
     	}
     	currentIdea.updateScore(-1);
-    	registerEvent("VOTEDOWN");
+    	registerEvent("VOTEDOWN", currentIdea);
     	return ok("You DISAGREED with the idea");
     }
 
@@ -256,6 +256,7 @@ public class Ideas extends Controller {
      * @return 
      */
     public static Result change(String event) {
+    		Idea preChangeIdea = currentIdea;
     		currentIdea = getLocalIdea();
     		feedVotes();
     		ObjectNode result = Json.newObject();
@@ -273,7 +274,7 @@ public class Ideas extends Controller {
             	result.put("eiContent", "");
             }
             if (event.equals("true")) {
-            	registerEvent("CHANGEIDEA");
+            	registerEvent("CHANGEIDEA",preChangeIdea);
             }
             result.put("message", "A new idea was selected");
             return ok(result);
@@ -402,11 +403,12 @@ public class Ideas extends Controller {
     	}
     }
     
-    public static boolean registerEvent(String event) {
+    public static boolean registerEvent(String event, Idea idea) {
     	Audit audit = new Audit();
     	audit.event=event;
     	java.util.Date date= new java.util.Date();
     	audit.datetime=new Timestamp(date.getTime());
+    	audit.idea = idea;
     	Audit.create(audit);
     	return true;
     }
