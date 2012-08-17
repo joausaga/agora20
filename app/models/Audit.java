@@ -25,11 +25,14 @@ public class Audit extends Model {
 	@Required
 	public Timestamp datetime;
 	
-	public static Finder<Integer,Idea> find = new Finder<Integer, Idea>(
-		    Integer.class, Idea.class
+	@OneToOne
+	public Idea idea;
+	
+	public static Finder<Integer,Audit> find = new Finder<Integer, Audit>(
+		    Integer.class, Audit.class
 	);
 	
-	public static List<Idea> all() {
+	public static List<Audit> all() {
 		return find.all();
 	}
 	
