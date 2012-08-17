@@ -82,13 +82,17 @@ public class Ideas extends Controller {
 	 * @return the idea retrieved
 	 */
 	public static Idea getLocalIdea() {
+		Integer numberIdeas = Idea.find.all().size();
 		if (existsIdea()) {
-			Idea i = Idea.find.where().ne("id", currentIdea.id).orderBy("RAND()")
-									.findList().get(0);
-			return i;
+			if (numberIdeas > 1) {
+				Idea i = Idea.find.where().ne("id", currentIdea.id).orderBy("RAND()")
+										  .findList().get(0);
+				return i;
+			}
+			else
+				return currentIdea;
 		}
 		else {
-			Integer numberIdeas = Idea.find.all().size();
 			if (numberIdeas == 0) {
 				feedIdeas();
 			}
