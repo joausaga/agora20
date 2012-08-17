@@ -7,6 +7,7 @@ create table audit (
   id                        integer auto_increment not null,
   event                     varchar(255),
   datetime                  datetime,
+  idea_id                   integer,
   constraint pk_audit primary key (id))
 ;
 
@@ -30,8 +31,10 @@ create table idea (
   constraint pk_idea primary key (id))
 ;
 
-alter table extra_info add constraint fk_extra_info_idea_1 foreign key (idea_id) references idea (id) on delete restrict on update restrict;
-create index ix_extra_info_idea_1 on extra_info (idea_id);
+alter table audit add constraint fk_audit_idea_1 foreign key (idea_id) references idea (id) on delete restrict on update restrict;
+create index ix_audit_idea_1 on audit (idea_id);
+alter table extra_info add constraint fk_extra_info_idea_2 foreign key (idea_id) references idea (id) on delete restrict on update restrict;
+create index ix_extra_info_idea_2 on extra_info (idea_id);
 
 
 
