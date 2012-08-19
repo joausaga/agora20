@@ -1,0 +1,46 @@
+@(ideaTitle: String, ideaText: String, ideaCreator: String, ideaVotes: Integer, eiTitle: String, eiContent: String)
+
+@main(title = "Agora 2.0") {
+	<div id = "ideaContainer" class="container-fluid">
+		<div class="row-fluid">
+  			<div class="span8">
+  				<!-- put container here!! -->
+  					<div id="ideaScore" class="score">Feedback Score<br>@ideaVotes</div><br>
+					<div class="h2Static">La domanda di questo momento:</div>
+					<div id="ideaTitle"><h1>@ideaTitle</h1></div> 
+					
+					<div id="ideaText"><h2>@ideaText</h2></div>
+					<!--<div class="span10"><p align="right"><span class="label label-inverse">Proposed by @ideaCreator</span></p></div>-->
+					
+                    <div class="h2Static"><u>Contribuisci</u> anche tu alla discussione di questo argomento!<br>
+						E' facile e semplice: <u>premi uno dei bottoni posti sotto lo schermo per esprimere il tuo parere!</u>
+					</div>
+					
+					<div class="buttonContainer">
+						<a class="buttonGreen" href="#"><span style='color:#F5F6CE;'>Pulsante VERDE<br>sono d'accordo</span></a>
+						<a class="buttonRed" href="#"><span style='color:#F5F6CE;'>Pulsante ROSSO<br>non sono d'accordo</span></a>
+						<a class="buttonOrange" href="#"><span style='color:#F5F6CE;'>Pulsante Centrale<br>cambia la domanda</span></a>
+					</div>
+				<!-- end container here!! -->
+  			</div>
+  			<div class="span4">
+				<div class="h3Static">Il progetto Agora 2.0</div>
+				<div id="index" class="indexContainer"> 
+					<ul>
+						<li>Agora 2.0 e una proposta sperimentale di piattaforma civica per la discussione democratica di idee di interesse pubblico 
+						relative alla vita nel Comune di Trento. Nuove idee posso essere proposte, 
+						commentate e votate anche online su agoratrento.ideascale.com <http://agoratrento.ideascale.com>, 
+						oppure votate utilizzando questo schermo.</li> 
+						<li>
+						Si precisa che la piattaforma Agora2.0 e in versione sperimentale e ha il solo scopo di supportare la ricerca per la quale e stata sviluppata. 
+						La generazione e votazione di idee ha unicamente valore di raccolta dati per l'esperimento in questione.
+						L'esito della votazione non impegna in alcun modo l'Amministrazione comunale di Trento.</li>
+						
+						<img src="@routes.Assets.at("images/agoratrento.jpeg")" widht="200" height="200" alt="" />
+						
+					</ul>
+				</div>
+  			</div>
+  		</div>
+	</div>
+}

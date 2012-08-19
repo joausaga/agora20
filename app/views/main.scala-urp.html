@@ -28,56 +28,34 @@
     </head>
     <body>
     	<div id="outerContainer">
-		<div class="modal hide" id="modalWindow">
-  			<div class="modal-header label label-success">
-    			<button type="button" class="close" data-dismiss="modal">×</button>
-    			<h2>Agora 2.0</h2>
-  			</div>
-  			<div id="modalMessage" class="modal-body"></div>
-  			<div class="modal-footer"></div>
-  		</div>
+			<div class="modal hide" id="modalWindow">
+	  			<div id="modalHeader" class="modal-header-agree">
+	    			<button type="button" class="close" data-dismiss="modal">×</button>
+	    			Agora 2.0
+	  			</div>
+	  			<div id="modalMessage" class="modal-body"></div>
+	  			<div class="modal-footer"></div>
+	  		</div>
 		
-  		<div class="headerSection"> 
-			<img src="@routes.Assets.at("images/URP_medium.jpg")" width="150" height="179" class="floatRight" />
-			<!--<img src="@routes.Assets.at("images/LOGOunitn.gif")" width="140" height="146" class="floatLeft" />-->
-			<div class="brand"> 
-				<div class="brandTitle">  Agora 2.0 </div>
-				<div class="headerText">Uno strumento per la partecipazione civica</div>
-			</div>
-		</div>
-	<div class="headerdivider"></div>
-  		
-    	<div id="alert-area"></div>
-    	<div id="main">
-			<div id="container" class="container_24">
-				<div class="mainbody">
-				
+	  		<div class="headerSection"> 
+				<img src="@routes.Assets.at("images/LOGOunitn.png")" with="200" height="206" class="floatRight" />
+				<img src="@routes.Assets.at("images/URP_medium.jpg")" with="200" height="206" class="floatRight" />
+				<div class="brand"> 
+					<div class="brandTitle">  Agora 2.0 </div>
+					<div class="headerText">Sperimentazione di uno strumento per la partecipazione civica</div>
 				</div>
 			</div>
-		</div>
-		
-    		@content
-			
+			<div class="headerdivider"></div>
+    		<br><br>
+    		<div id="alert-area"></div>
+			<div id="container" >@content</div>
 	</div>
-    		<div id="footer">
-				<div class="container_24">
-					<div id="grid_8">
-						<div class="inside">
-							<div class="block">
-								<h3> Esonero di responsabilità: </h3>
-								<p> Questa applicazione è sperimentale e solo a scopo di ricerca. I sondaggi hanno valore unicamente informativo e <a href="#"> non si garantisce </a> quindi che verranno intraprese azioni sulla base delle votazioni raccolte.</p>
-								<div id="copyright">
-								<p>&copy; Agora 2.0 è un progetto sviluppato all'interno dell'Università di Trento e basato sulla piattaforma IdeaScale</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-        		
-      		
-    	
-    
+	<div id="footer">
+		<div class="copyright">
+			<p>&copy; Agora 2.0 is a Project developed at University of Trento</p>
+		</div>	
+	</div><!--/container-->   
+			
 	<!-- 
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
