@@ -384,6 +384,8 @@ public class Ideas extends Controller {
 					}
     			}
 			}
+			currentIdea = null;
+			currentIdea = getLocalIdea();
 			return redirect("/ideas");
 		} catch (TimeoutException e1) {
 			Logger.error("Something wrong with the request to obtain new ideas from IdeaScale");
