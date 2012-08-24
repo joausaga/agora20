@@ -91,8 +91,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    color: #453625;
-    font-size: 4.00em;
+    color: #000000;
+    font-size: 4.3em;
     letter-spacing: -2px;
     line-height: 1;
     margin-bottom: 0.25em;
@@ -100,7 +100,7 @@ h1 {
 }
 
 .h2Static {
-    color: #A9A8A1;
+    color: #453625;
     font-size: 2.0em;
     letter-spacing: -1px;
     margin-bottom: 1.25em;    
@@ -108,11 +108,12 @@ h1 {
 }
 
 .h3Static {
-    color: #2E2318;
+    color: #453625;
     font-size: 2.0em;
     line-height: 1;
 	margin-top: 1.25em;
 	margin-bottom: 1.25em;  
+	margin-left: 2.3em;  
 	text-align: left;
 }
 
@@ -126,14 +127,14 @@ h1 {
 }
 
 h2 {
-    color: #635144;
-    font-size: 2.0em;
-    letter-spacing: -1px;
+    color: #000000;
+    font-size: 2.5em;
+    letter-spacing: 1px;
 	text-align: left;
     margin-bottom: 1.75em;
 }
 h3 {
-    color: #953D0F;
+    color: #000000;
     font-size: 1.6em;
     line-height: 1;
 	text-align: left;
@@ -162,10 +163,11 @@ h6 {
 
 ul{ font: 85% "Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
 color:#656561;
+    font-size: 1.2em;
 }
 
 li{
-    font-size: 1.85em;
+    font-size: 1.8em;
     line-height: 28px;
 }
 .extraInfoText{
@@ -214,7 +216,7 @@ a.buttonGreen {
 }
 
 a.buttonOrange {
-    background-color: #C98736;
+    background-color: #848484; 
     border-radius: 8px 8px 8px 8px;
     display: block;
     float: left;
