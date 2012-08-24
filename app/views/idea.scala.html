@@ -1,37 +1,58 @@
 @(ideaTitle: String, ideaText: String, ideaCreator: String, ideaVotes: Integer, eiTitle: String, eiContent: String)
 
 @main(title = "Agora 2.0") {
+
 	<div id = "ideaContainer" class="container-fluid">
+
 		<div class="row-fluid">
+
   			<div class="span8">
+
   				<!-- put container here!! -->
-  					<div id="ideaScore" class="score">Feedback Score<br>@ideaVotes</div><br>
-					<div class="h2Static">Current displayed question: </div>
+  					<!--<div id="ideaScore" class="score">Feedback Score<br>@ideaVotes</div><br>-->
+
+					<div class="h2Static">La domanda di questo momento:</div>
+
 					<div id="ideaTitle"><h1>@ideaTitle</h1></div> 
+
 					
 					<div id="ideaText"><h2>@ideaText</h2></div>
+
 					<!--<div class="span10"><p align="right"><span class="label label-inverse">Proposed by @ideaCreator</span></p></div>-->
+
 					
-                    <div class="h2Static"><u>Contribute</u> to the debate of this idea!<br>
-						It's easy: <u>Click on one of the buttons on the mouse to express your agreement or disagreement!</u>
+
+                   <div class="h2Static">
+
+						<i>Premi uno dei bottoni posti sotto lo schermo per esprimere il tuo parere!</i>
 					</div>
 					
 					<div class="buttonContainer">
-						<a class="buttonGreen" href="#"><span style='color:#F5F6CE;'>GREEN button<br>I AGREE</span></a>
-						<a class="buttonRed" href="#"><span style='color:#F5F6CE;'>RED button<br>I DON'T AGREE</span></a>
-						<a class="buttonOrange" href="#"><span style='color:#F5F6CE;'>ORANGE wheel<br>CHANGE IDEA</span></a>
+						<a class="buttonGreen" href="#"><span style='color:#F5F6CE;'>SONO<br>D'ACCORDO</span></a>
+						<a class="buttonRed" href="#"><span style='color:#F5F6CE;'>NON SONO D'ACCORDO</span></a>
+						<a class="buttonOrange" href="#"><span style='color:#F5F6CE;'>Pulsante Centrale<br>Cambia la domanda</span></a>
+
 					</div>
 				<!-- end container here!! -->
   			</div>
+
   			<div class="span4">
-				<div class="h3Static">About Agora 2.0</div>
+				<div class="h3Static">Che cos'è?</div>
 				<div id="index" class="indexContainer"> 
 					<ul>
-						<li>Agora2.0 is a voting platform for ideas on common interests for the academic community. Ideas can be posted, and voted on, online at agoraunitn.ideascale.it, or voted on using this public screen.</li> 
-						<img src="@routes.Assets.at("images/agoratrento.jpeg")" widht="200" height="200" alt="" />
+						<p>Agora 2.0 è una piattaforma civica per la discussione democratica di idee relative alla vita nel comune di Trento.</p>
+						<p>Le idee possono essere presentate da qualunque cittadino voglia partecipare alla discussione pubblica.
+						Per poter inserire nuove idee basta visitare il sito <b>agoratrento.ideascale.com</b></p>
+						<p>Una volta approvate le idee vengono pubblicate sia online che su questo schermo.</p>
+						<p><i>Si precisa che la piattaforma Agora2.0 e in versione sperimentale e ha il solo scopo di supportare la ricerca per la quale e stata sviluppata. 
+						La generazione e votazione di idee ha unicamente valore di raccolta dati per l'esperimento in questione.
+						L'esito della votazione non impegna in alcun modo l'Amministrazione comunale di Trento.</i></p>
+											
 					</ul>
 				</div>
   			</div>
+
   		</div>
+
 	</div>
 }
