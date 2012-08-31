@@ -39,7 +39,26 @@ function modalWindow(message, type) {
 		$('#modalWindow').delay(700).fadeOut("slow", function () { $(this).modal('hide'); });
 }
 
-function updateIdeaContent(data, effect) {
+function transitionEffect(context, data) {
+	if (context == "auto") {
+		$("#ideaAll").effect("explode", {}, 500, 
+				function() {
+					updateIdeaContent(data);
+					$("#ideaAll").removeAttr( "style" ).hide().fadeIn(); 
+				}
+		);
+	}
+	if (context == "manual") {
+		$("#ideaAll").effect("drop", {}, 500, 
+				function() { 
+					updateIdeaContent(data);
+					$("#ideaAll").removeAttr( "style" ).hide().fadeIn("slow");
+				}
+		);
+	}
+}
+
+function updateIdeaContent(data) {
 	/*if (data["score"] == 0) {
 		$("#ideaScore").attr("class", "label label-info");
 	}
@@ -51,16 +70,12 @@ function updateIdeaContent(data, effect) {
 			$("#ideaScore").attr("class", "label label-important");
 		}
 	}*/
-	if (effect)
-		$("#ideaContainer").hide();
 	$("#ideaTitle").html("<h1 align=\"center\">"+data["title"]+"</h1>");
 	$("#ideaText").html("<h2 align=\"center\">"+data["content"]+"</h2>");
 	//$("#ideaAuthor").html("<h4 align=\"left\"> Disclaimer: " + data["author"] + "</h4>");
-	$("#ideaScore").html("Feedback Score<br>" + data["score"]);
-	$("#extraInfoTitle").html("<h3 align=\"center\">"+ data["eiTitle"] +"</h3>");
-	$("#extraInfoContent").html("<p>"+ data["eiContent"] +"</p>");
-	if (effect)
-		$("#ideaContainer").fadeIn(2500);
+	//$("#ideaScore").html("Feedback Score<br>" + data["score"]);
+	//$("#extraInfoTitle").html("<h3 align=\"center\">"+ data["eiTitle"] +"</h3>");
+	//$("#extraInfoContent").html("<p>"+ data["eiContent"] +"</p>");
 }
 
 function voteUp() {
@@ -71,7 +86,7 @@ function voteUp() {
 				var  jqxhr = $.get(
 						"/ideas/show", 
 						function(data, textStatus, jqXHR) {
-							updateIdeaContent(data,false);
+							updateIdeaContent(data);
 						});
 				jqxhr.error(function(){ newAlert('error', data.responseText); });
 			});
@@ -86,7 +101,7 @@ function voteDown() {
 				var  jqxhr = $.get(
 						"/ideas/show", 
 						function(data, textStatus, jqXHR) {
-							updateIdeaContent(data,false);
+							updateIdeaContent(data);
 						});
 				jqxhr.error(function(data){ newAlert('error', data.responseText); });
 			});
@@ -98,9 +113,12 @@ function changeIdea(e) {
 			"/ideas/change/",
 			{event:e},
 			function(data, textStatus, jqXHR) {
-				//if (e)
+				if (e)
+					transitionEffect("manual", data);
+				else
+					transitionEffect("auto", data);
 					//modalWindow(data["message"],"change");
-				updateIdeaContent(data,true);
+				//updateIdeaContent(data,true);
 			});
 	jqxhr.error(function(data){ staticAlert('error', data.responseText); });
 }
