@@ -39,7 +39,7 @@ function modalWindow(message, type) {
 		$('#modalWindow').delay(700).fadeOut("slow", function () { $(this).modal('hide'); });
 }
 
-function updateIdeaContent(data) {
+function updateIdeaContent(data, effect) {
 	/*if (data["score"] == 0) {
 		$("#ideaScore").attr("class", "label label-info");
 	}
@@ -51,12 +51,16 @@ function updateIdeaContent(data) {
 			$("#ideaScore").attr("class", "label label-important");
 		}
 	}*/
+	if (effect)
+		$("#ideaContainer").hide();
 	$("#ideaTitle").html("<h1 align=\"center\">"+data["title"]+"</h1>");
 	$("#ideaText").html("<h2 align=\"center\">"+data["content"]+"</h2>");
 	//$("#ideaAuthor").html("<h4 align=\"left\"> Disclaimer: " + data["author"] + "</h4>");
 	$("#ideaScore").html("Feedback Score<br>" + data["score"]);
 	$("#extraInfoTitle").html("<h3 align=\"center\">"+ data["eiTitle"] +"</h3>");
 	$("#extraInfoContent").html("<p>"+ data["eiContent"] +"</p>");
+	if (effect)
+		$("#ideaContainer").fadeIn(2500);
 }
 
 function voteUp() {
@@ -67,7 +71,7 @@ function voteUp() {
 				var  jqxhr = $.get(
 						"/ideas/show", 
 						function(data, textStatus, jqXHR) {
-							updateIdeaContent(data);
+							updateIdeaContent(data,false);
 						});
 				jqxhr.error(function(){ newAlert('error', data.responseText); });
 			});
@@ -82,7 +86,7 @@ function voteDown() {
 				var  jqxhr = $.get(
 						"/ideas/show", 
 						function(data, textStatus, jqXHR) {
-							updateIdeaContent(data);
+							updateIdeaContent(data,false);
 						});
 				jqxhr.error(function(data){ newAlert('error', data.responseText); });
 			});
@@ -94,9 +98,9 @@ function changeIdea(e) {
 			"/ideas/change/",
 			{event:e},
 			function(data, textStatus, jqXHR) {
-				if (e)
-					modalWindow(data["message"],"change");
-				updateIdeaContent(data);
+				//if (e)
+					//modalWindow(data["message"],"change");
+				updateIdeaContent(data,true);
 			});
 	jqxhr.error(function(data){ staticAlert('error', data.responseText); });
 }
@@ -123,5 +127,5 @@ $(document).ready(function() {
 		}
 	});
 	/* Set a timer to change the ideas every 5 minutes */
-	//window.setInterval(function() {changeIdea(false);}, 300000);
+	window.setInterval(function() {changeIdea(false);}, 60000);
 });
