@@ -5,4 +5,4 @@ Project aimed at combining the potential of public displays and the power of onl
 
 Screenshot
 ----------
-![screenshot](https://www.dropbox.com/s/a5lu69taedpld4v/Screenshot.jpg?dl=0 "Screeshot")
+![screenshot](https://dl.dropboxusercontent.com/u/55956367/agora_screenshot.jpg "Screeshot")
