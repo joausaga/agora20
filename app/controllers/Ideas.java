@@ -45,12 +45,12 @@ import play.Logger;
 public class Ideas extends Controller {
 	
 	static Form<Idea> ideaForm = form(Idea.class);
-	static final String API_TOKEN = "5b3326f8-50a5-419d-8f02-eef6a42fd61a";
+	static final String API_TOKEN = "";
 	static final String COMMUNITY_NAME = "fiveheads";
 	//static final String COMMUNITY_NAME = "agoratrento";
-	//static final String API_TOKEN = "54a0840e-17b7-4f82-9243-07d1380e7e17";
+	//static final String API_TOKEN = "";
 	//static final String COMMUNITY_NAME = "agoraunitn";
-	//static final String API_TOKEN = "11c2b8fb-9cc5-4dae-afd3-cf03abb8ecf1";
+	//static final String API_TOKEN = "";
 	static Idea currentIdea = null;
 	
 	public static boolean existsIdea() {
