@@ -5,4 +5,4 @@ Project that aims at combining the potential of public displays and the power of
 
 Screenshot
 ----------
-![screenshot](https://dl.dropboxusercontent.com/u/55956367/agora_screenshot.jpg "Screeshot")
+![screenshot](https://jorgesaldivar.info/wp-content/uploads/2022/07/agora20-1024x557.png "Screeshot")
